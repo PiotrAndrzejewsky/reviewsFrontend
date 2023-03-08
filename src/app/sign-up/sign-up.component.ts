@@ -13,6 +13,9 @@ import { AuthService } from '../services/auth.service';
 })
 export class SignUpComponent {
 
+  showMessage = false;
+  errorMessage = "";
+
   public user: SignUpUser = {
     username: "",
     password: "",
@@ -40,14 +43,20 @@ export class SignUpComponent {
       this.authService.saveUser(this.user).pipe(
         take(1)
       ).subscribe(res => {
-        this.router.navigateByUrl("/");
+        this.router.navigateByUrl("login?signedUp=true");
       },
       err => {
-        alert("Username is taken");
-      })
+        this.showMessage = true;
+        if (err.status === 409) {
+          this.errorMessage = "Email is taken";
+        } else {
+          this.errorMessage = "An error occurred";
+        }
+      });
     }
     else {
-      alert("Passwords do not match")
+      this.showMessage = true;
+      this.errorMessage = "Passwords do not match";
     }
   }
 

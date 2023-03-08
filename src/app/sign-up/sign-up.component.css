@@ -34,7 +34,7 @@ form > div {
   margin: 10px;
 }
 
-.sign-up-btn {
+.sign-up-btn, .errorMessage {
   background-color: rgba(254,255,254,255);
   height: 100px;
   justify-content: center;
@@ -46,4 +46,10 @@ form > div {
 
 .sign-up-btn a {
   text-decoration: none;
+}
+
+.errorMessage {
+  text-align: center;
+  color: red;
+  line-height: 100px;
 }

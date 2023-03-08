@@ -51,4 +51,8 @@
           <span>&nbsp;Login</span>
       </a>
   </p>
+
+  <p class="errorMessage" [ngStyle]="{'display': showMessage ? 'block' : 'none'}">
+    {{errorMessage}}
+  </p>
 </div>
