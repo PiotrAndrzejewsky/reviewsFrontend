@@ -35,7 +35,7 @@ form > div {
   width: 100%;
 }
 
-.sign-up-btn {
+.sign-up-btn, .confirmation {
   background-color: rgba(254,255,254,255);
   height: 100px;
   justify-content: center;
@@ -47,4 +47,9 @@ form > div {
 
 .sign-up-btn a {
   text-decoration: none;
+}
+
+.confirmation {
+  text-align: center;
+  color: green
 }

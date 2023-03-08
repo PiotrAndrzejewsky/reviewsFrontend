@@ -1,6 +1,6 @@
 <div>
   <form name="form" #f="ngForm" (submit)="authUser()" class="login-form">
-    
+
     <div class="form-group">
         <label for="email">Email</label>
         <input type="email"
@@ -31,5 +31,11 @@
       <a type="button" class="signUp-btn" (click)="goToSignUp()">
           <span>&nbsp;Sign Up</span>
       </a>
+  </p>
+
+  <p class="confirmation" [ngStyle]="{'display': showClass ? 'block' : 'none'}">
+    Your account has been created succesfully. <br>
+    We have sent you an activation email, <br>
+    until then you will not be able to login
   </p>
 </div>

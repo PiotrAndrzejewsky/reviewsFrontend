@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { catchError, take } from 'rxjs';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from '../models/login-view-model';
@@ -13,6 +13,8 @@ import { User } from '../models/login-view-model';
 })
 export class LoginComponent implements OnInit {
 
+  showClass = false;
+
   public user: User = {
     username: "",
     password: "",
@@ -22,11 +24,17 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
     this.cookieService.deleteAll();
+    this.route.queryParams.subscribe(params => {
+      if (params["signedUp"] == "true") {
+        this.showClass = true;
+      };
+    });
   }
 
   public authUser(): void {
